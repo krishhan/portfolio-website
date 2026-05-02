@@ -1,0 +1,90 @@
+.skillsSection {
+  padding: 6rem 0;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 4rem;
+}
+
+.title {
+  font-family: var(--font-space-grotesk), sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0;
+  color: var(--foreground);
+}
+
+.line {
+  height: 1px;
+  flex-grow: 1;
+  background: var(--glass-border);
+  position: relative;
+}
+
+.line::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 50px;
+  background: var(--accent-blue);
+  box-shadow: 0 0 10px var(--accent-blue);
+}
+
+.skillsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.skillCard {
+  padding: 2rem;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  cursor: none;
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.cardTitle {
+  font-family: var(--font-space-grotesk), sans-serif;
+  font-size: 1.2rem;
+  margin: 0;
+  color: var(--foreground);
+}
+
+.skillsList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.skillBadge {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  color: #ccc;
+  transition: all 0.2s ease;
+}
+
+.skillBadge:hover {
+  background: rgba(0, 229, 255, 0.1);
+  border-color: rgba(0, 229, 255, 0.3);
+  color: var(--accent-blue);
+}

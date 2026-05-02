@@ -1,0 +1,147 @@
+.achievementsSection {
+  padding: 6rem 0;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 4rem;
+}
+
+.title {
+  font-family: var(--font-space-grotesk), sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0;
+  color: var(--foreground);
+}
+
+.line {
+  height: 1px;
+  flex-grow: 1;
+  background: var(--glass-border);
+  position: relative;
+}
+
+.line::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 50px;
+  background: var(--accent-blue);
+  box-shadow: 0 0 10px var(--accent-blue);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+}
+
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.columnTitle {
+  font-family: var(--font-space-grotesk), sans-serif;
+  font-size: 1.5rem;
+  color: var(--foreground);
+  margin: 0 0 2rem 0;
+}
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  position: relative;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 20px;
+  width: 2px;
+  background: var(--glass-border);
+  z-index: -1;
+}
+
+.timelineItem {
+  display: flex;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.02);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: none;
+}
+
+.timelineItem:hover {
+  transform: translateX(5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  border-color: rgba(0, 229, 255, 0.3);
+}
+
+.iconContainer {
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  border-radius: 50%;
+  background: rgba(0, 229, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(0, 229, 255, 0.2);
+  box-shadow: 0 0 10px rgba(0, 229, 255, 0.1);
+}
+
+.iconContainerAlt {
+  background: rgba(157, 78, 221, 0.1);
+  border-color: rgba(157, 78, 221, 0.2);
+  box-shadow: 0 0 10px rgba(157, 78, 221, 0.1);
+}
+
+.icon {
+  color: var(--accent-blue);
+}
+
+.iconAlt {
+  color: var(--accent-purple);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.date {
+  font-size: 0.85rem;
+  color: var(--accent-blue);
+  font-family: var(--font-space-grotesk), sans-serif;
+}
+
+.itemTitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0;
+  color: var(--foreground);
+}
+
+.itemDescription {
+  font-size: 0.95rem;
+  color: #a0a0a0;
+  margin: 0;
+  line-height: 1.5;
+}
