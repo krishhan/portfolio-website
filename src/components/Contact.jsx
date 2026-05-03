@@ -10,16 +10,40 @@ export default function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    // Simulate form submission
-    setTimeout(() => {
+    
+    try {
+      const response = await fetch("https://formsubmit.co/ajax/roykrishan382@gmail.com", {
+        method: "POST",
+        headers: { 
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          name: formState.name,
+          email: formState.email,
+          message: formState.message,
+          _subject: `Portfolio Message from ${formState.name}`,
+          _template: "box"
+        })
+      });
+
+      if (response.ok) {
+        setIsSubmitting(false);
+        setIsSubmitted(true);
+        setFormState({ name: "", email: "", message: "" });
+        setTimeout(() => setIsSubmitted(false), 5000);
+      } else {
+        setIsSubmitting(false);
+        alert("Failed to send message. Please try again or email me directly at roykrishan382@gmail.com");
+      }
+    } catch (error) {
+      console.error(error);
       setIsSubmitting(false);
-      setIsSubmitted(true);
-      setFormState({ name: "", email: "", message: "" });
-      setTimeout(() => setIsSubmitted(false), 3000);
-    }, 1500);
+      alert("An error occurred. Please try again or email me directly at roykrishan382@gmail.com");
+    }
   };
 
   return (
@@ -45,9 +69,9 @@ export default function Contact() {
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.6 }}
           >
-            <h4 className={styles.infoTitle}>Let's build something amazing together.</h4>
+            <h4 className={styles.infoTitle}>Let&apos;s build something amazing together.</h4>
             <p className={styles.infoDesc}>
-              Whether you have a question, a project idea, or just want to say hi, I'll try my best to get back to you!
+              Whether you have a question, a project idea, or just want to say hi, I&apos;ll try my best to get back to you!
             </p>
 
             <div className={styles.infoItems}>
@@ -79,20 +103,24 @@ export default function Contact() {
 
           <motion.form 
             className={`glass-card ${styles.contactForm}`}
-            onSubmit={handleSubmit}
+            action="https://formsubmit.co/roykrishan382@gmail.com"
+            method="POST"
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
+            <input type="hidden" name="_subject" value="New Portfolio Message!" />
+            <input type="hidden" name="_template" value="box" />
+            <input type="hidden" name="_captcha" value="false" />
+            
             <div className={styles.formGroup}>
               <label htmlFor="name">Name</label>
               <input 
                 type="text" 
                 id="name" 
+                name="name"
                 required 
-                value={formState.name}
-                onChange={(e) => setFormState({...formState, name: e.target.value})}
                 placeholder="John Doe"
               />
             </div>
@@ -102,9 +130,8 @@ export default function Contact() {
               <input 
                 type="email" 
                 id="email" 
+                name="email"
                 required 
-                value={formState.email}
-                onChange={(e) => setFormState({...formState, email: e.target.value})}
                 placeholder="john@example.com"
               />
             </div>
@@ -113,29 +140,19 @@ export default function Contact() {
               <label htmlFor="message">Message</label>
               <textarea 
                 id="message" 
+                name="message"
                 required 
                 rows="5"
-                value={formState.message}
-                onChange={(e) => setFormState({...formState, message: e.target.value})}
-                placeholder="Hello Krishan, I'd like to talk about..."
+                placeholder="Hello Krishan, I&apos;d like to talk about..."
               ></textarea>
             </div>
 
             <button 
               type="submit" 
               className={styles.submitBtn}
-              disabled={isSubmitting || isSubmitted}
             >
-              {isSubmitting ? (
-                <span>Sending...</span>
-              ) : isSubmitted ? (
-                <span>Sent Successfully!</span>
-              ) : (
-                <>
-                  <span>Send Message</span>
-                  <Send size={18} />
-                </>
-              )}
+              <span>Send Message</span>
+              <Send size={18} />
             </button>
           </motion.form>
         </div>

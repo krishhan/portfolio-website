@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Float, Environment, ContactShadows, Text3D, Center } from "@react-three/drei";
@@ -44,8 +44,9 @@ function FloatingTech() {
   );
 }
 
+const roles = ["React.js", "Django", "React Native", "AI", "Next.js"];
+
 export default function Hero() {
-  const roles = ["React.js", "Django", "React Native", "AI", "Next.js"];
   const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
 
   useEffect(() => {
@@ -133,6 +134,3 @@ export default function Hero() {
     </section>
   );
 }
-
-// Ensure to add this because useState is used in Hero
-import { useState } from "react";

@@ -35,7 +35,6 @@ export default function Projects() {
       ],
       tags: ["React Native", "Firebase", "Context API"],
       links: [
-        { name: "Live Demo", icon: <ExternalLink size={16} />, href: "#" },
         { name: "GitHub", icon: <FaGithub size={16} />, href: "https://github.com/krishhan/QuickBites" }
       ],
       gradient: "linear-gradient(135deg, rgba(157, 78, 221, 0.1), rgba(255, 0, 128, 0.1))"
