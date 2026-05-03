@@ -103,24 +103,20 @@ export default function Contact() {
 
           <motion.form 
             className={`glass-card ${styles.contactForm}`}
-            action="https://formsubmit.co/roykrishan382@gmail.com"
-            method="POST"
+            onSubmit={handleSubmit}
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <input type="hidden" name="_subject" value="New Portfolio Message!" />
-            <input type="hidden" name="_template" value="box" />
-            <input type="hidden" name="_captcha" value="false" />
-            
             <div className={styles.formGroup}>
               <label htmlFor="name">Name</label>
               <input 
                 type="text" 
                 id="name" 
-                name="name"
                 required 
+                value={formState.name}
+                onChange={(e) => setFormState({...formState, name: e.target.value})}
                 placeholder="John Doe"
               />
             </div>
@@ -130,8 +126,9 @@ export default function Contact() {
               <input 
                 type="email" 
                 id="email" 
-                name="email"
                 required 
+                value={formState.email}
+                onChange={(e) => setFormState({...formState, email: e.target.value})}
                 placeholder="john@example.com"
               />
             </div>
@@ -140,9 +137,10 @@ export default function Contact() {
               <label htmlFor="message">Message</label>
               <textarea 
                 id="message" 
-                name="message"
                 required 
                 rows="5"
+                value={formState.message}
+                onChange={(e) => setFormState({...formState, message: e.target.value})}
                 placeholder="Hello Krishan, I&apos;d like to talk about..."
               ></textarea>
             </div>
@@ -150,9 +148,18 @@ export default function Contact() {
             <button 
               type="submit" 
               className={styles.submitBtn}
+              disabled={isSubmitting || isSubmitted}
             >
-              <span>Send Message</span>
-              <Send size={18} />
+              {isSubmitting ? (
+                <span>Sending...</span>
+              ) : isSubmitted ? (
+                <span>Sent Successfully!</span>
+              ) : (
+                <>
+                  <span>Send Message</span>
+                  <Send size={18} />
+                </>
+              )}
             </button>
           </motion.form>
         </div>
