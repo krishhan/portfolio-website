@@ -22,7 +22,9 @@ export default function Projects() {
         { name: "GitHub", icon: <FaGithub size={16} />, href: "https://github.com/krishhan/DHARA_SIH" },
         { name: "Case Study", icon: <FileText size={16} />, href: "#" }
       ],
-      gradient: "linear-gradient(135deg, rgba(0, 229, 255, 0.1), rgba(157, 78, 221, 0.1))"
+      gradient: "linear-gradient(135deg, rgba(0, 229, 255, 0.1), rgba(157, 78, 221, 0.1))",
+      screenshot: "/images/dhara.png",
+      type: "web"
     },
     {
       title: "QuickBites – Food Ordering App",
@@ -37,7 +39,9 @@ export default function Projects() {
       links: [
         { name: "GitHub", icon: <FaGithub size={16} />, href: "https://github.com/krishhan/QuickBites" }
       ],
-      gradient: "linear-gradient(135deg, rgba(157, 78, 221, 0.1), rgba(255, 0, 128, 0.1))"
+      gradient: "linear-gradient(135deg, rgba(157, 78, 221, 0.1), rgba(255, 0, 128, 0.1))",
+      screenshot: "/images/quickbites.png",
+      type: "mobile"
     }
   ];
 
@@ -65,7 +69,7 @@ export default function Projects() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.6, delay: idx * 0.2 }}
-              whileHover={{ scale: 1.02 }}
+              whileHover={{ scale: 1.01 }}
               style={{ background: `var(--glass-bg), ${project.gradient}` }}
             >
               <div className={styles.cardContent}>
@@ -86,12 +90,36 @@ export default function Projects() {
 
                 <div className={styles.projectLinks}>
                   {project.links.map((link, lIdx) => (
-                    <a key={lIdx} href={link.href} className={styles.linkBtn}>
+                    <a key={lIdx} href={link.href} className={styles.linkBtn} target="_blank" rel="noopener noreferrer">
                       {link.icon}
                       <span>{link.name}</span>
                     </a>
                   ))}
                 </div>
+              </div>
+
+              <div className={styles.visualPreview}>
+                {project.type === "web" ? (
+                  <div className={styles.browserFrame}>
+                    <div className={styles.browserWindow}>
+                      <img 
+                        src={project.screenshot} 
+                        alt={`${project.title} Screenshot`} 
+                        className={styles.screenshotImage}
+                      />
+                    </div>
+                  </div>
+                ) : (
+                  <div className={styles.phoneFrame}>
+                    <div className={styles.phoneWindow}>
+                      <img 
+                        src={project.screenshot} 
+                        alt={`${project.title} Screenshot`} 
+                        className={styles.screenshotImageMobile}
+                      />
+                    </div>
+                  </div>
+                )}
               </div>
             </motion.div>
           ))}

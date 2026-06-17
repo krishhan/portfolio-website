@@ -13,11 +13,11 @@ export default function Contact() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     try {
       const response = await fetch("https://formsubmit.co/ajax/roykrishan382@gmail.com", {
         method: "POST",
-        headers: { 
+        headers: {
           'Content-Type': 'application/json',
           'Accept': 'application/json'
         },
@@ -49,7 +49,7 @@ export default function Contact() {
   return (
     <section className={styles.contactSection} id="contact">
       <div className={styles.container}>
-        <motion.div 
+        <motion.div
           className={styles.header}
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -62,7 +62,7 @@ export default function Contact() {
         </motion.div>
 
         <div className={styles.splitLayout}>
-          <motion.div 
+          <motion.div
             className={styles.contactInfo}
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -93,15 +93,15 @@ export default function Contact() {
               <div className={styles.resumeIcon}><FileText size={24} className="neon-text-purple" /></div>
               <div className={styles.resumeInfo}>
                 <h5>Download My Resume</h5>
-                <p>One-page PDF Resume</p>
+
               </div>
-              <a href="https://app.luminpdf.com/viewer/69f658830c28128f2ae2f20f" target="_blank" rel="noopener noreferrer" className={styles.downloadBtn}>
+              <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className={styles.downloadBtn}>
                 <Download size={18} />
               </a>
             </div>
           </motion.div>
 
-          <motion.form 
+          <motion.form
             className={`glass-card ${styles.contactForm}`}
             onSubmit={handleSubmit}
             initial={{ opacity: 0, x: 30 }}
@@ -111,42 +111,42 @@ export default function Contact() {
           >
             <div className={styles.formGroup}>
               <label htmlFor="name">Name</label>
-              <input 
-                type="text" 
-                id="name" 
-                required 
+              <input
+                type="text"
+                id="name"
+                required
                 value={formState.name}
-                onChange={(e) => setFormState({...formState, name: e.target.value})}
-                placeholder="John Doe"
+                onChange={(e) => setFormState({ ...formState, name: e.target.value })}
+                placeholder="Alex Hales"
               />
             </div>
-            
+
             <div className={styles.formGroup}>
               <label htmlFor="email">Email</label>
-              <input 
-                type="email" 
-                id="email" 
-                required 
+              <input
+                type="email"
+                id="email"
+                required
                 value={formState.email}
-                onChange={(e) => setFormState({...formState, email: e.target.value})}
-                placeholder="john@example.com"
+                onChange={(e) => setFormState({ ...formState, email: e.target.value })}
+                placeholder="alex@example.com"
               />
             </div>
 
             <div className={styles.formGroup}>
               <label htmlFor="message">Message</label>
-              <textarea 
-                id="message" 
-                required 
+              <textarea
+                id="message"
+                required
                 rows="5"
                 value={formState.message}
-                onChange={(e) => setFormState({...formState, message: e.target.value})}
+                onChange={(e) => setFormState({ ...formState, message: e.target.value })}
                 placeholder="Hello Krishan, I&apos;d like to talk about..."
               ></textarea>
             </div>
 
-            <button 
-              type="submit" 
+            <button
+              type="submit"
               className={styles.submitBtn}
               disabled={isSubmitting || isSubmitted}
             >

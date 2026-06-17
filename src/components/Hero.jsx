@@ -111,7 +111,7 @@ export default function Hero() {
             <a href="#projects" className={`${styles.btn} ${styles.primaryBtn}`}>
               View Projects <ExternalLink size={18} />
             </a>
-            <a href="https://app.luminpdf.com/viewer/69f658830c28128f2ae2f20f" target="_blank" rel="noopener noreferrer" className={`${styles.btn} ${styles.secondaryBtn}`}>
+            <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className={`${styles.btn} ${styles.secondaryBtn}`}>
               Resume <Download size={18} />
             </a>
             <a href="#contact" className={`${styles.btn} ${styles.ghostBtn}`}>
